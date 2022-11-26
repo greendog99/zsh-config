@@ -1,3 +1,6 @@
+PATH=$HOME/bin:$PATH
+export EDITOR='nvim'
+
 autoload -Uz compinit && compinit   # Enable tab completion
 setopt auto_cd                      # Enable cd partial completion, ..., etc.
 setopt interactivecomments          # Comment command lines with hash

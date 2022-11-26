@@ -17,14 +17,9 @@ source $configpath/aliases.zsh
 source $configpath/settings.zsh
 source $configpath/gnubin.zsh
 source $configpath/pygments.zsh
-
-PATH=$HOME/bin:$PATH
-export EDITOR='nvim'
+source $configpath/p10k.zsh
 
 ## Things that like to be near the end
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Git status is extremely slow on RPi for some reason, so disable it.
 if [[ `uname -m` == "armv7l" ]]; then
