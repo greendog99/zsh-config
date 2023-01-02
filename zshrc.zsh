@@ -18,6 +18,7 @@ source $configpath/settings.zsh
 source $configpath/gnubin.zsh
 source $configpath/pygments.zsh
 source $configpath/p10k.zsh
+source $configpath/zsh-completions.zsh
 
 ## Things that like to be near the end
 
