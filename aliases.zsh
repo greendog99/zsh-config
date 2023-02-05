@@ -12,6 +12,9 @@ alias grep="grep --color=auto"
 alias mkdir="mkdir -pv"
 alias wget="wget --continue --progress=bar --timestamping"
 alias curl="curl --continue-at - --location --progress-bar --remote-name --remote-time"
+alias ffprobe="ffprobe -hide_banner"
+alias ffmpeg="ffmpeg -hide_banner"
+alias ydiff="ydiff -s -w0"
 
 # Directory listing
 alias la='ls -AFh' # all files except . & ..
