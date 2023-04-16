@@ -49,3 +49,5 @@ alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 alias icat="kitty +kitten icat"
+
+alias pullall='for i in */.git; do ( echo $i; cd $i/..; git pull; ); done'
