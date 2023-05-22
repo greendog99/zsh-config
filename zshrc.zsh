@@ -16,7 +16,7 @@ source $configpath/kitty.zsh
 source $configpath/aliases.zsh
 source $configpath/settings.zsh
 source $configpath/gnubin.zsh
-source $configpath/pygments.zsh
+#source $configpath/pygments.zsh
 source $configpath/p10k.zsh
 source $configpath/zsh-completions.zsh
 

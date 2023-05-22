@@ -17,7 +17,7 @@ zplug "MichaelAquilina/zsh-you-should-use"        # Tell me when an alias is ava
 zplug "arzzen/calc.plugin.zsh"                    # Calculator. Start line with =
 zplug "zdharma-continuum/fast-syntax-highlighting", defer:2 # Syntax highlighting as-you-type
 zplug "zsh-users/zsh-history-substring-search", defer:3
-zplug "plugins/colorize", from:oh-my-zsh          # ccat and cless functions; requires Pygments
+#zplug "plugins/colorize", from:oh-my-zsh          # ccat and cless functions; requires Pygments
 zplug "plugins/macos", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
 zplug "plugins/sudo", from:oh-my-zsh        # <esc><esc> to prefix previous command with sudo
 

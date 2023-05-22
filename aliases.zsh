@@ -36,6 +36,11 @@ then
   alias lltree='lsd --tree -lF'
 fi
 
+if builtin whence -p batcat &> /dev/null
+then
+  alias bat='batcat'
+fi
+
 # global aliases (append letters to command to run through pipe)
 alias -g WC='|wc -l'
 alias -g NUL='> /dev/null 2>&1'
