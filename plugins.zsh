@@ -1,7 +1,7 @@
-if [[ -d /home/linuxbrew ]]; then
-  export ZPLUG_HOME=/home/linuxbrew/.linuxbrew/opt/zplug
-else
+if [[ -d ~/.zplug ]]; then
   export ZPLUG_HOME=~/.zplug
+else
+  export ZPLUG_HOME=${HOMEBREW_PREFIX}/opt/zplug
 fi
 
 source $ZPLUG_HOME/init.zsh

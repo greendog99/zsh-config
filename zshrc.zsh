@@ -9,8 +9,8 @@ source ~/.secrets.zsh
 
 # Load individual zsh files
 configpath=$HOME/.config/zsh
-source $configpath/plugins.zsh
 source $configpath/homebrew.zsh
+source $configpath/plugins.zsh
 source $configpath/colorize-man.zsh
 source $configpath/kitty.zsh
 source $configpath/aliases.zsh
@@ -29,3 +29,4 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
