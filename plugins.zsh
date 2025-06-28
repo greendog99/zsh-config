@@ -7,7 +7,7 @@ fi
 source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage' # Keep zplug updated
-zplug "romkatv/powerlevel10k", as:theme, depth:1  # Theme
+# zplug "romkatv/powerlevel10k", as:theme, depth:1  # Theme
 zplug "Aloxaf/fzf-tab"
 zplug "zsh-users/zsh-completions"                 # Tab autocomplete for various commands
 zplug "greymd/docker-zsh-completion"              # Docker and docker-compose completions

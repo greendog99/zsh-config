@@ -36,9 +36,20 @@ then
   alias lltree='lsd --tree -lF'
 fi
 
-if builtin whence -p batcat &> /dev/null
+if builtin whence -p bat &> /dev/null
 then
-  alias bat='batcat'
+  alias cat='bat --plain'
+fi
+
+if builtin whence -p duf &> /dev/null
+then
+  alias df='duf --hide special'
+fi
+
+# https://github.com/bcicen/ctop
+if builtin whence -p docker &> /dev/null
+then
+  alias ctop='docker run --rm -ti --name=ctop -v /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest'
 fi
 
 # global aliases (append letters to command to run through pipe)
@@ -56,3 +67,13 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 alias icat="kitty +kitten icat"
 
 alias pullall='for i in */.git; do ( echo $i; cd $i/..; git pull; ); done'
+
+# Listening sockets
+alias netstat='ss -tulwr'
+
+# BGA
+alias bgastatemap='php ~/prog/bga/bga-sharedcode/misc/generate_state_diagram.php | dot -Tpng -o states.png ; open states.png'
+alias bgasync='lftp -u "newwavemike:" sftp://1.studio.boardgamearena.com -e "mirror -R -v --delete --delete-excluded --only-newer --exclude=.git/ --exclude=.DS_Store ~/prog/bga/pegsandjokers pegsandjokers; quit;"'
+bgawatch () {
+  find ~/prog/bga/pegsandjokers/ -type f | entr -s 'lftp -u "newwavemike:" sftp://1.studio.boardgamearena.com -e "mirror -R -v --delete --delete-excluded --only-newer --exclude=.git/ --exclude=.DS_Store ~/prog/bga/pegsandjokers pegsandjokers; quit;" ; afplay /System/Library/Sounds/Tink.aiff'
+}
