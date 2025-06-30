@@ -1,4 +1,5 @@
-PATH=/snap/bin:$HOME/bin:$PATH
+PATH=/snap/bin:$HOME/bin:$PATH:/usr/sbin
+
 export EDITOR='nvim'
 export SUDO_EDITOR=`which nvim`
 

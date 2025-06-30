@@ -2,14 +2,11 @@
 alias c=clear
 alias h=history
 
-# Command replacements
-command -v nvim >/dev/null && alias vim="nvim" vi="nvim" v="nvim" vimdiff="nvim -d"
-
-# Default options
+# Default options for commands
 alias df='df -h'
 alias diff="diff --color=auto"
 alias grep="grep --color=auto"
-alias mkdir="mkdir -pv"
+alias mkdir="mkdir -pv"  # create intermediate directories, verbosely
 alias wget="wget --continue --progress=bar --timestamping"
 alias curl="curl --continue-at - --location --progress-bar --remote-name --remote-time"
 alias ffprobe="ffprobe -hide_banner"
@@ -17,14 +14,17 @@ alias ffmpeg="ffmpeg -hide_banner"
 alias ydiff="ydiff -s -w0"
 
 # Directory listing
-alias la='ls -AFh' # all files except . & ..
-alias ll='ls -lFh'   # long, human readable
-alias lla='ls -lAFh' # all files except . & ..
-alias lt='ls -ltFhr' # recursively by date
-alias lat='ls -lAtFhr' # recursively by date
+alias la='ls -AFh'      # all files except . & ..
+alias ll='ls -lFh'      # long, human readable
+alias lla='ls -lAFh'    # all files except . & ..
+alias lt='ls -ltFhr'    # recursively by date
+alias lat='ls -lAtFhr'  # recursively by date
 alias ldot='ls -ld .*'  # just dot files
 
-# User lsd instead of ls.
+# nvim instead of vim
+command -v nvim >/dev/null && alias vim="nvim" vi="nvim" v="nvim" vimdiff="nvim -d"
+
+# lsd instead of ls.
 # Also see ~/.config/lsd for defaults, which are probably:
 #   date: relative
 #   hyperlink: auto
@@ -52,24 +52,27 @@ then
   alias ctop='docker run --rm -ti --name=ctop -v /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest'
 fi
 
-# global aliases (append letters to command to run through pipe)
+# global aliases (append to command to run through pipe, e.g. "cat foo NUL")
 alias -g WC='|wc -l'
 alias -g NUL='> /dev/null 2>&1'
 
 # IP addresses
-alias ipext="dig +short myip.opendns.com @resolver1.opendns.com"
-alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+if builtin whence -p ifconfig &> /dev/null
+then
+  alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+else
+  alias ips="ip addr | awk '\$1==\"inet\" && \$3!=\"scope\" {print \$2}' "
+fi
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
-alias icat="kitty +kitten icat"
-
+# Git
 alias pullall='for i in */.git; do ( echo $i; cd $i/..; git pull; ); done'
 
 # Listening sockets
-alias netstat='ss -tulwr'
+alias netstat='ss -tulwrn'
 
 # BGA
 alias bgastatemap='php ~/prog/bga/bga-sharedcode/misc/generate_state_diagram.php | dot -Tpng -o states.png ; open states.png'
